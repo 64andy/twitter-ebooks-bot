@@ -19,7 +19,7 @@ except LookupError:
     nltk.download("averaged_perceptron_tagger")
     print("Done")
 
-
+# https://github.com/jsvine/markovify/blob/master/README.md
 class POSifiedText(markovify.Text):
     def word_split(self, sentence):
         words = re.split(self.word_split_pattern, sentence)
