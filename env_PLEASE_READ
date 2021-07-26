@@ -1,0 +1,6 @@
+# Enter your Twitter account's four API keys into here
+# 'Save As...' this file, name it `.env`
+ACCESS_PUBLIC=???
+ACCESS_SECRET=???
+CONSUMER_PUBLIC_KEY=???
+CONSUMER_SECRET_KEY=???
