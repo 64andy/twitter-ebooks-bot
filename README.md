@@ -11,6 +11,7 @@ It uses Markov Chains (markovify) to generate the tweets, and NLP (nltk) so it u
 This bot was discontinued in June 2021
 
 ### Setup:
+0. **Note:** Recommend putting into its own venv
 1. The required packages are in `requirements.txt`, to install run `pip install -r requirements.txt`
 2. Change the settings in `e_books/settings.py`, specifically the `user_handle`
 3. Add your bot account's 4 API keys to a `.env` file (see the provided file)

@@ -3,12 +3,16 @@ import os
 import re
 from typing import List
 
+from dotenv import load_dotenv
 import markovify
 from nltk.tag import pos_tag
 from .text import statuses_to_clean_texts, clean_banned_words
 from .settings import source_count, exact_source_len, min_length, max_length
 
 RATE_LIMIT_CODE = 88
+
+# Firstly, load the .env file
+load_dotenv()
 
 # Making sure nltk's data has been installed
 try:
@@ -30,12 +34,11 @@ class POSifiedText(markovify.Text):
         sentence = " ".join(word.split("::")[0] for word in words)
         return sentence
 
-
 api: twitter.Api = twitter.Api(
-            consumer_key        = os.environ.get("CONSUMER_PUBLIC_KEY"),
-            consumer_secret     = os.environ.get("CONSUMER_SECRET_KEY"),
-            access_token_key    = os.environ.get("ACCESS_PUBLIC"      ),
-            access_token_secret = os.environ.get("ACCESS_SECRET"      ),
+            consumer_key        = os.environ["CONSUMER_PUBLIC_KEY"],
+            consumer_secret     = os.environ["CONSUMER_SECRET_KEY"],
+            access_token_key    = os.environ["ACCESS_PUBLIC"      ],
+            access_token_secret = os.environ["ACCESS_SECRET"      ],
             tweet_mode          = 'extended'
         )
 

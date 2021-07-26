@@ -3,7 +3,12 @@ Bot settings
 """
 
 '''The handle of the user we're getting tweets from e.g. "wint"'''
-user_handle: str        = 'wint'
+user_handle: str        = 'dril'
+
+''' How frequently it'll post in seconds
+e.g. 1200 = 3 times an hour'''
+tweet_interval: int     = 3600
+
 '''Number of tweets fetched from timeline and trained off
 (note, might fetch more)'''
 source_count: int       = 600
@@ -12,10 +17,6 @@ source_count: int       = 600
 exactly as many specified.
 Note, it can still overfetch the API'''
 exact_source_len: bool  = False
-
-''' How frequently it'll post in seconds
-e.g. 1200 = 3 times an hour'''
-tweet_interval: int     = 1800
 
 '''Minimum output tweet length'''
 min_length: int         = 12

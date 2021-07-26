@@ -5,7 +5,7 @@ Created by @64andy2000
 Created on 20/12/18
 V1 completed 23/12/18
 V2: Now with Markov Chains and NLP
-    completed 07/09/18
+    completed 07/09/19
 '''
 
 import time
@@ -13,7 +13,7 @@ from datetime import datetime
 from traceback import format_exc
 from e_books import api, generate_markov
 from e_books.settings import user_handle, tweet_interval
-from keep_alive import keep_alive, errors
+from server import run_server, errors
 
 
 def post_ebook():
@@ -26,12 +26,18 @@ def post_ebook():
 
 
 if __name__ == "__main__":
-    keep_alive()
+    server_thread = run_server()
     while True:
         try:
             if (tweet_interval-1) < (time.time() % tweet_interval):      # If o'clock is a few seconds away
                 post_ebook()
                 time.sleep(4)
             time.sleep(1)
+        except KeyboardInterrupt:
+            # Kill the process
+            print("Killing server...")
+            server_thread.terminate()
+            server_thread.join()
+            quit()
         except:
             errors.append(format_exc())
